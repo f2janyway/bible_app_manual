@@ -18,7 +18,6 @@ fun AppRoot(
 ) {
     LazyColumn(contentPadding = PaddingValues(start = 16.dp), verticalArrangement = Arrangement.Center) {
         item {
-
             FlowTabLayout(tabList = tabList, selectedTabEnum = selectedTabEnum, onClickTab)
             Spacer(modifier = modifier.height(8.dp))
             Divider(color = Color.LightGray)
@@ -29,6 +28,8 @@ fun AppRoot(
         }
 
         item {
+            Divider(color = Color.LightGray)
+            Spacer(modifier = modifier.height(8.dp))
             AppBottomInfo()
         }
     }

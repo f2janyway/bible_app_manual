@@ -1,5 +1,6 @@
 import androidx.compose.material.LocalTextStyle
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
@@ -11,6 +12,7 @@ import main.TabRoutEnum
 
 @Composable
 fun App() {
+//    Text("heelo")
     MaterialTheme {
         val tabList by remember {
             mutableStateOf(

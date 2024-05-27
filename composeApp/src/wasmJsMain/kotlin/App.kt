@@ -19,6 +19,8 @@ fun App() {
 //                    (TabRoutEnum.BOOKMARK),
                     (TabRoutEnum.HIGHLIGHT),
                     (TabRoutEnum.BASIC_SETTING),
+                    TabRoutEnum.SEARCH,
+                    TabRoutEnum.ETC,
 
                     )
             )

@@ -2,20 +2,26 @@ package main.route
 
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.asComposeImageBitmap
 import androidx.compose.ui.graphics.painter.BitmapPainter
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
+import androidx.compose.ui.platform.LocalViewConfiguration
+import androidx.compose.ui.platform.LocalWindowInfo
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.unit.dp
 import bible_app_manual.composeapp.generated.resources.*
@@ -37,14 +43,10 @@ import org.w3c.dom.Node
 import org.w3c.dom.url.URL
 import org.w3c.fetch.Response
 
-@Composable
-fun BaseImage(painter: Painter, modifier: Modifier = Modifier) {
-    Surface(shape = RoundedCornerShape(20.dp)) {
-        Image(painter = painter, modifier = modifier.height(100.dp), contentDescription = null)
-    }
-}
 
-@OptIn(InternalResourceApi::class)
+val heightImage = 600.dp
+
+@OptIn(InternalResourceApi::class, ExperimentalFoundationApi::class)
 @Composable
 fun HighlightView() {
     Column {
@@ -57,28 +59,27 @@ fun HighlightView() {
             Res.drawable.h5,
             Res.drawable.h6,
         )
-        var index by remember {
-            mutableStateOf(0)
-        }
-        LaunchedEffect(Unit) {
-            repeat(10000) {
-                delay(2000)
-                index += 1
+        LazyRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            items(images) { item ->
+                Image(
+                    painter = painterResource(item),
+                    contentDescription = null,
+                    modifier = Modifier.height(heightImage)
+                )
             }
         }
-        BaseImage(painter = painterResource(images[index % 6]))
         Text(
             buildAnnotatedString {
                 append("1. 해당 절을 좌 or 우 로 드래그")
                 appendLine()
-                appendLine()
                 append("1-1. 이전에 저장되어 있으면 삭제")
-                appendLine()
                 appendLine()
                 append("1-2. 이전에 저장되어 있지않으면 하이라이트")
                 appendLine()
                 appendLine()
                 append("2. 앱 시작화면 \"하이라이트\"탭에서 시간순으로 저장")
+                appendLine()
+                append("2-1. \"하이라이트\"탭에서 해당장 클릭시 이동")
             }
         )
     }

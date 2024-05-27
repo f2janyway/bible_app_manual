@@ -16,7 +16,7 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun Tab(item: TabRoutEnum,selected:Boolean, onClick: () -> Unit, modifier: Modifier = Modifier) {
     Surface(shape = CircleShape, color = if (selected) Color.Black else Color.Gray, onClick = onClick) {
-        Box(modifier = modifier.padding(horizontal = 24.dp, vertical = 8.dp), contentAlignment = Alignment.Center) {
+        Box(modifier = modifier.padding(horizontal = 16.dp, vertical = 8.dp), contentAlignment = Alignment.Center) {
             Text(item.toText(), color = Color.White)
         }
     }

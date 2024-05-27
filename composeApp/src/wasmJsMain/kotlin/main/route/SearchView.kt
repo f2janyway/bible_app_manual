@@ -13,5 +13,5 @@ fun SearchView() {
         Res.drawable.search2,
         Res.drawable.search3,
     )
-    ImageRows(images)
+    RowImages(images)
 }

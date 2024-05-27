@@ -10,6 +10,6 @@ fun EtcView() {
         Res.drawable.etc0,
         Res.drawable.etc1,
     )
-    ImageRows(images)
+    RowImages(images)
 }
 

@@ -59,15 +59,8 @@ fun HighlightView() {
             Res.drawable.h5,
             Res.drawable.h6,
         )
-        LazyRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-            items(images) { item ->
-                Image(
-                    painter = painterResource(item),
-                    contentDescription = null,
-                    modifier = Modifier.height(heightImage)
-                )
-            }
-        }
+
+        RowImages(images)
         Text(
             buildAnnotatedString {
                 append("1. 해당 절을 좌 or 우 로 드래그")

@@ -28,26 +28,28 @@ fun AppBottomInfo() {
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             Text("개역한글 O / 개역개정 X")
-//
-//
-//
-            val openUrl = {
-                uriHandler.openUri("https://github.com/f2janyway/privacy_policy_relate/blob/main/privacy_policy/bible.md")
-            }
-            Surface(shape = CircleShape, border = BorderStroke(1.dp, Color.Gray), onClick = {
-                openUrl.invoke()
-            }) {
-                Text("개인정보처리방침", modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp))
-            }
-//
-            Surface(shape = CircleShape, border = BorderStroke(1.dp, Color.Gray), onClick = {
-                uriHandler.openUri("https://www.bskorea.or.kr/")
-            }) {
-//            Box(contentAlignment = Alignment.Center, ) {
-                Text("Korean Bible Society 1961", modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp))
-            }
-        }
 
+            TextRound("개인정보처리방침", onClick = {
+                uriHandler.openUri("https://github.com/f2janyway/privacy_policy_relate/blob/main/privacy_policy/bible.md")
+            })
+            TextRound("플레이스토어", onClick = {
+                uriHandler.openUri("https://play.google.com/store/apps/details?id=com.box.bible")
+            })
+            TextRound("Korean Bible Society 1961", onClick = {
+                uriHandler.openUri("https://www.bskorea.or.kr/")
+            })
+//
+        }
+    }
+}
+
+@OptIn(ExperimentalMaterialApi::class)
+@Composable
+private fun TextRound(text:String,onClick: () -> Unit,modifier: Modifier = Modifier) {
+    Surface(shape = CircleShape, border = BorderStroke(1.dp, Color.Gray), onClick = {
+        onClick.invoke()
+    }) {
+        Text(text, modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp))
     }
 
 }

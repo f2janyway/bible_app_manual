@@ -22,73 +22,8 @@ import org.w3c.dom.events.Event
 fun main() {
 
     ComposeViewport(document.body!!) {
-//        val showLoading = remember { mutableStateOf(true) }
-
-
         App()
-//        if (showLoading.value) {
-//            Box(contentAlignment = Alignment.Center) {
-//                CircularProgressIndicator()
-//            }
-//        }
-//        val versionNameDiv = document.createElement("div")
-//        versionNameDiv.id = "versionName"
-//        document.body!!.appendChild(versionNameDiv)
-//        val link = document.createElement("a")
-//        link.href = "https://example.com"; // Set the URL you want the link to point to (optional)
-//        appendVersionName()
-//        appendVersionName()
-//        LaunchedEffect(Unit) {
-//            val div = document.createElement("div")
-//            div.id = "version_root"
-//            document.body!!.appendChild(div)
-//
-//        }
-        // Append the link element to the versionNameDiv
-//        versionNameDiv.appendChild(link)
     }
 }
 
-const val latestAppVersion = "1.2.3"
 
-//fun appendVersionName():()->Unit = js(
-//    """{
-//        if( document.getElementById('version_root') != null){
-//            return
-//        }
-//        var div = document.createElement("div");
-//        div.id = "version_root"
-//
-//        div.style.position = "fixed"
-//        div.style.bottom = "0"
-//        div.style.left = "0"
-//        div.style.right = "0"
-//        div.style.textAlign = "center"
-//        div.style.padding = "10px"
-//        div.style.backgroundColor = "#f1f1f1"
-//        div.style.borderTop = "1px solid #ccc"
-//        div.style.textDecoration = "none"
-//        div.style.color = "#000"
-//        div.style.fontSize = "16px"
-//
-//       document.body.appendChild(div);
-//
-//       var divPlay = document.createElement("div");
-//       var divMy = document.createElement("div");
-//       divPlay.id = "latest_version_name"
-//       divMy.id = "my_version_name"
-////       divPlay.innerText = "최신버전:${latestAppVersion}";
-//       divMy.innerText = "내 앱 버전";
-//
-//       div.appendChild(divPlay);
-//       div.appendChild(divMy);
-//
-//       var a = document.createElement("a");
-//       a.target = "_blank";
-//       a.href = "https://play.google.com/store/apps/details?id=com.box.bible";
-//       a.innerText = "스토어 가기";
-//
-//       div.appendChild(a);
-//
-//        }"""
-//)

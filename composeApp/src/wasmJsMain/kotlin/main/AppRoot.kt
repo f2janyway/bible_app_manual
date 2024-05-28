@@ -16,7 +16,7 @@ fun AppRoot(
     onClickTab: (index: Int) -> Unit,
     modifier: Modifier = Modifier
 ) {
-    LazyColumn(contentPadding = PaddingValues(start = 16.dp), verticalArrangement = Arrangement.Center) {
+    LazyColumn(verticalArrangement = Arrangement.Center) {
         item {
             FlowTabLayout(tabList = tabList, selectedTabEnum = selectedTabEnum, onClickTab)
             Spacer(modifier = modifier.height(8.dp))
@@ -50,7 +50,11 @@ fun FlowTabLayout(
     onClickTab: (Int) -> Unit,
     modifier: Modifier = Modifier
 ) {
-    FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
+    FlowRow(
+        horizontalArrangement = Arrangement.spacedBy(8.dp),
+        verticalArrangement = Arrangement.spacedBy(4.dp),
+        modifier = modifier.padding(horizontal = 16.dp)
+    ) {
         tabList.forEachIndexed { idx, tab ->
             Tab(item = tab, selected = selectedTabEnum == tab, onClick = { onClickTab(idx) })
         }

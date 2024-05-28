@@ -62,7 +62,8 @@ fun HighlightView() {
 
         RowImages(images)
         Text(
-            buildAnnotatedString {
+            modifier = Modifier.padding(horizontal = 16.dp),
+            text = buildAnnotatedString {
                 append("1. 해당 절을 좌 or 우 로 드래그")
                 appendLine()
                 append("1-1. 이전에 저장되어 있으면 삭제")

@@ -23,7 +23,7 @@ fun AppBottomInfo() {
     val uriHandler = LocalUriHandler.current
     Row {
         Column(
-//            modifier = Modifier.padding(top = 120.dp),
+            modifier = Modifier.fillMaxWidth(),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {

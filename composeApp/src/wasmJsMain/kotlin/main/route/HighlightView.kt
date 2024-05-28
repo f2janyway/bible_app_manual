@@ -49,7 +49,7 @@ val heightImage = 600.dp
 @OptIn(InternalResourceApi::class, ExperimentalFoundationApi::class)
 @Composable
 fun HighlightView() {
-    Column {
+//    Column {
 //        Image(painter = painterResource(Res.drawable.hl), contentDescription = null)
         val images = listOf(
             Res.drawable.h1,
@@ -75,19 +75,19 @@ fun HighlightView() {
                 append("2-1. \"하이라이트\"탭에서 해당장 클릭시 이동")
             }
         )
-    }
+//    }
 //    val codec = remember {
 //            Codec.makeFromData(Data.makeFromBytes(bytes))
 //    }
 //    GifAnimation(codec, Modifier.size(100.dp))
-    val bytes = remember {
-        mutableStateOf<ByteArray?>(null)
-    }
+//    val bytes = remember {
+//        mutableStateOf<ByteArray?>(null)
+//    }
 //    LaunchedEffect(Unit) {
 //    }
-    bytes.value?.let {
-        Codec.makeFromData(Data.makeFromBytes(it))
-    }
+//    bytes.value?.let {
+//        Codec.makeFromData(Data.makeFromBytes(it))
+//    }
 }
 
 

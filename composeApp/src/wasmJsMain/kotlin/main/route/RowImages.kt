@@ -1,14 +1,13 @@
 package main.route
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.Text
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Done
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -18,17 +17,16 @@ import org.jetbrains.compose.resources.painterResource
 
 @Composable
 fun RowImages(list: List<DrawableResource>, modifier: Modifier = Modifier) {
-    val state = rememberLazyListState()
-    val count = state.layoutInfo.totalItemsCount
-    LazyRow(horizontalArrangement = Arrangement.spacedBy(8.dp), state = state) {
+    LazyRow(horizontalArrangement = Arrangement.spacedBy(8.dp), ) {
         itemsIndexed(list) { idx, item ->
-            Box {
+            Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                Text("${idx + 1}/${list.count()}", modifier = modifier.padding(top = 16.dp))
                 Image(
                     painter = painterResource(item),
+//                    imageVector = Icons.Default.Done,
                     contentDescription = null,
-                    modifier = Modifier.height(heightImage)
+                    modifier = Modifier.width(heightImage /2.3f).height(heightImage)
                 )
-                Text("${idx + 1}/$count", modifier = modifier.align(Alignment.TopCenter).padding(top = 16.dp))
             }
         }
 

@@ -10,10 +10,12 @@ import androidx.compose.ui.graphics.Shadow
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextGeometricTransform
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
+import main.route.FontType.*
 
 @Composable
 fun SubInfoView() {
@@ -21,10 +23,52 @@ fun SubInfoView() {
     val text = annotatedStringExplainSubInfoBottom(Color.Black)
     Text(text, modifier = Modifier.padding(horizontal = 16.dp))
 }
-private val textGeometricTransform = TextGeometricTransform(skewX = -0.1f)
+
+private val textGeometricTransform = TextGeometricTransform(skewX = -1.0f)
 private val offsetOrigin = Offset(.3f, .3f)
 private val offsetName = Offset(1f, 1f)
-fun annotatedStringExplainSubInfoBottom(textColor: Color?): AnnotatedString = buildAnnotatedString {
+private enum class FontType {
+    ORIGIN,NAME,AREA
+}
+private fun AnnotatedString.Builder.withStyleType(text:String, type: FontType){
+    when(type){
+        ORIGIN -> {
+            withStyle(spanStyleOrigin()){
+                append(text)
+            }
+        }
+        NAME -> withStyle(
+            spanStyleName()
+        ){
+            append(text)
+        }
+        AREA -> withStyle(spanStyleArea()){
+            append(text)
+        }
+    }
+}
+private fun spanStyleOrigin() = SpanStyle(
+    shadow = Shadow(
+        color = Color.Black,
+        offset = offsetOrigin
+    ),
+    textGeometricTransform = textGeometricTransform,
+    fontStyle = FontStyle.Italic
+)
+
+private fun spanStyleName() = SpanStyle(
+    shadow = Shadow(
+        color = Color.Black,
+        offset = offsetName
+    )
+)
+
+private fun spanStyleArea() = SpanStyle(
+    fontStyle = FontStyle.Italic
+)
+
+
+private fun annotatedStringExplainSubInfoBottom(textColor: Color?): AnnotatedString = buildAnnotatedString {
 
     fun etc(value: String? = null) {
         append(" 등")
@@ -41,47 +85,19 @@ fun annotatedStringExplainSubInfoBottom(textColor: Color?): AnnotatedString = bu
     appendLine()
     //지명
     append("지명:")
-    withStyle(
-        SpanStyle(
-            textGeometricTransform = textGeometricTransform,
-        )
-    ) {
-        append("에덴")
-    }
+    withStyleType("에덴", type = AREA)
     comma()
-    withStyle(
-        SpanStyle(
-            textGeometricTransform = textGeometricTransform,
-        )
-    ) {
-        append("예루살렘")
-    }
+    withStyleType("예루살렘", type = AREA)
+
     etc("기울임")
 
     //인명
     append("인명:")
-    withStyle(
-        SpanStyle(
-            shadow = Shadow(
-                color = textColor ?: Color.Black,
-                offset = offsetName
-            )
-        )
-    ) {
-        append("아브라함")
-    }
+    withStyleType("아브라함",NAME)
     comma()
-    withStyle(
-        SpanStyle(
-            shadow = Shadow(
-                color = textColor ?: Color.Black,
-                offset = offsetName
-            )
-        )
-    ) {
-        append("다윗")
-    }
+    withStyleType("다윗",NAME)
     etc("굵음1")
+
     //origin (영어 원문
     append("기타 원어 단어:")
     withStyle(
@@ -90,39 +106,18 @@ fun annotatedStringExplainSubInfoBottom(textColor: Color?): AnnotatedString = bu
                 color = textColor ?: Color.Black,
                 offset = offsetOrigin
             ),
-            textGeometricTransform = textGeometricTransform
+            textGeometricTransform = textGeometricTransform,
+            fontStyle = FontStyle.Italic
         )
     ) {
         append("바알")
     }
+    withStyleType("바알",ORIGIN)
     comma()
-    withStyle(
-        SpanStyle(
-            shadow = Shadow(
-                color = textColor ?: Color.Black,
-                offset = offsetOrigin
-            ),
-            textGeometricTransform = textGeometricTransform
-        )
-    ) {
-        append("세겔")
-    }
-
+    withStyleType("세겔",ORIGIN)
     comma()
-    withStyle(
-        SpanStyle(
-            shadow = Shadow(
-                color = textColor ?: Color.Black,
-                offset = offsetOrigin
-            ),
-            textGeometricTransform = textGeometricTransform
-        )
-    ) {
-        append("우림")
-    }
-
+    withStyleType("우림",ORIGIN)
     etc("굵음0.5+기울임")
-
 
     //comment
     withStyle(

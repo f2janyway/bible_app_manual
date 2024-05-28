@@ -100,18 +100,6 @@ private fun annotatedStringExplainSubInfoBottom(textColor: Color?): AnnotatedStr
 
     //origin (영어 원문
     append("기타 원어 단어:")
-    withStyle(
-        SpanStyle(
-            shadow = Shadow(
-                color = textColor ?: Color.Black,
-                offset = offsetOrigin
-            ),
-            textGeometricTransform = textGeometricTransform,
-            fontStyle = FontStyle.Italic
-        )
-    ) {
-        append("바알")
-    }
     withStyleType("바알",ORIGIN)
     comma()
     withStyleType("세겔",ORIGIN)

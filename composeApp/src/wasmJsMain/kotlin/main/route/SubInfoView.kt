@@ -84,7 +84,7 @@ private fun annotatedStringExplainSubInfoBottom(textColor: Color?): AnnotatedStr
     appendLine()
     appendLine()
     //지명
-    append("지명:")
+    append("지역:")
     withStyleType("에덴", type = AREA)
     comma()
     withStyleType("예루살렘", type = AREA)

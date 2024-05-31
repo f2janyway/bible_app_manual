@@ -70,6 +70,7 @@ fun TabRoutEnum.MakeView() {
         TabRoutEnum.BASIC_SETTING -> BasicSettingView()
         TabRoutEnum.SEARCH -> SearchView()
         TabRoutEnum.ETC -> EtcView()
+        TabRoutEnum.Tab -> TabView()
     }
 }
 

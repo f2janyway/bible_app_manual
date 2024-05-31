@@ -18,6 +18,7 @@ fun App() {
             mutableStateOf(
                 listOf(
                     (TabRoutEnum.SUB_INFO),
+                    (TabRoutEnum.Tab),
 //                    (TabRoutEnum.BOOKMARK),
                     (TabRoutEnum.HIGHLIGHT),
                     (TabRoutEnum.BASIC_SETTING),

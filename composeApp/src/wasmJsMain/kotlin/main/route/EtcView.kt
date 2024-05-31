@@ -13,3 +13,4 @@ fun EtcView() {
     RowImages(images)
 }
 
+

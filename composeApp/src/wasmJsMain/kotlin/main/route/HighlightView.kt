@@ -44,7 +44,7 @@ import org.w3c.dom.url.URL
 import org.w3c.fetch.Response
 
 
-val heightImage = 600.dp
+val heightImage = 500.dp
 
 @OptIn(InternalResourceApi::class, ExperimentalFoundationApi::class)
 @Composable

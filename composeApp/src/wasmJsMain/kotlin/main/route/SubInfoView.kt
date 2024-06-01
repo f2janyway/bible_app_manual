@@ -80,7 +80,8 @@ private fun annotatedStringExplainSubInfoBottom(textColor: Color?): AnnotatedStr
     }
 
     fun comma() = append(",")
-    append("특수 표기 정보")
+
+    append("* 설정 창에서 해당 기능 (적용, 미적용) 선택할 수 있습니다.")
     appendLine()
     appendLine()
     //지명

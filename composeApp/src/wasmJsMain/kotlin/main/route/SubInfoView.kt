@@ -27,26 +27,31 @@ fun SubInfoView() {
 private val textGeometricTransform = TextGeometricTransform(skewX = -1.0f)
 private val offsetOrigin = Offset(.3f, .3f)
 private val offsetName = Offset(1f, 1f)
+
 private enum class FontType {
-    ORIGIN,NAME,AREA
+    ORIGIN, NAME, AREA
 }
-private fun AnnotatedString.Builder.withStyleType(text:String, type: FontType){
-    when(type){
+
+private fun AnnotatedString.Builder.withStyleType(text: String, type: FontType) {
+    when (type) {
         ORIGIN -> {
-            withStyle(spanStyleOrigin()){
+            withStyle(spanStyleOrigin()) {
                 append(text)
             }
         }
+
         NAME -> withStyle(
             spanStyleName()
-        ){
+        ) {
             append(text)
         }
-        AREA -> withStyle(spanStyleArea()){
+
+        AREA -> withStyle(spanStyleArea()) {
             append(text)
         }
     }
 }
+
 private fun spanStyleOrigin() = SpanStyle(
     shadow = Shadow(
         color = Color.Black,
@@ -70,13 +75,14 @@ private fun spanStyleArea() = SpanStyle(
 
 private fun annotatedStringExplainSubInfoBottom(textColor: Color?): AnnotatedString = buildAnnotatedString {
 
-    fun etc(value: String? = null) {
+    fun etc(value: String? = null, newLineCnt: Int = 2) {
         append(" 등")
         value?.let {
             append("; $value")
         }
-        appendLine()
-        appendLine()
+        repeat(newLineCnt) {
+            appendLine()
+        }
     }
 
     fun comma() = append(",")
@@ -90,22 +96,24 @@ private fun annotatedStringExplainSubInfoBottom(textColor: Color?): AnnotatedStr
     comma()
     withStyleType("예루살렘", type = AREA)
 
-    etc("기울임")
+    etc("기울임", newLineCnt = 1)
+    appendLine("(지역, 지파, 건물 등의 공간, 영역)")
+    appendLine()
 
     //인명
     append("인명:")
-    withStyleType("아브라함",NAME)
+    withStyleType("아브라함", NAME)
     comma()
-    withStyleType("다윗",NAME)
+    withStyleType("다윗", NAME)
     etc("굵음1")
 
     //origin (영어 원문
     append("기타 원어 단어:")
-    withStyleType("바알",ORIGIN)
+    withStyleType("바알", ORIGIN)
     comma()
-    withStyleType("세겔",ORIGIN)
+    withStyleType("세겔", ORIGIN)
     comma()
-    withStyleType("우림",ORIGIN)
+    withStyleType("우림", ORIGIN)
     etc("굵음0.5+기울임")
 
     //comment
